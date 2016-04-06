@@ -23,15 +23,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.menu = statusMenu
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         appearance = uDefaults.stringForKey("AppleInterfaceStyle") ?? "Light"
-        //uDefaults.addObserver(self, forKeyPath: "AppleInterfaceStyle", options: NSKeyValueObservingOptions.New, context: nil)
-        
+        uDefaults.addObserver(self, forKeyPath: "AppleInterfaceStyle", options: NSKeyValueObservingOptions.New, context: nil)
         
         updateTime()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         timer.invalidate()
-        //uDefaults.removeObserver(self, forKeyPath: "AppleInterfaceStyle")
+        uDefaults.removeObserver(self, forKeyPath: "AppleInterfaceStyle")
     }
 
     @IBAction func quitClicked(sender: NSMenuItem) {
@@ -42,6 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.image = NSImage.whatColorIcon(appearance)
     }
 
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        print(keyPath)
+    }
 }
 
 extension NSColor {
@@ -58,7 +60,7 @@ extension NSColor {
 
 extension NSImage {
     class func whatColorIcon(appearance: String) -> NSImage {
-        let theIcon = NSImage(size: NSSize(width: 16, height: 16))
+        let theIcon = NSImage(size: NSSize(width: 14, height: 14))
         theIcon.lockFocus()
         let iconPath = NSBezierPath(roundedRect: NSMakeRect(0, 0, 14, 14), xRadius: 3, yRadius: 3)
         if appearance == "Dark" {
