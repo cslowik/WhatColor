@@ -3,10 +3,16 @@ A little menu bar app that shows the current time as a color.
 
 Inspired by: http://whatcolourisit.scn9a.org
 
-I make colors a bit differently. The raw numbers are turned into ratios and used for each color, rather than using the numbers themselves. This gets the colors out of the dark greens and blues, and should give for some nice variety through the day!
+Two clock faces!
 
+##RGB:
+This clock face changes dramatically through the hour.
 Hours: red
-
 Minutes: green
-
 Seconds: blue
+
+##HSB:
+A clock face that changes color with the hour. Later in the hour, colors are more saturated. Each minute "counts up" from dark to light.
+Hours: hue
+Minutes: saturation
+seconds: brightness
