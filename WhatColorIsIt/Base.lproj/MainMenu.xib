@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
@@ -14,12 +13,33 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WhatColorIsIt" customModuleProvider="target">
             <connections>
+                <outlet property="hsbItem" destination="yeO-VT-VLJ" id="jXq-C9-Fwp"/>
+                <outlet property="rgbItem" destination="coA-4R-iuU" id="ddE-jg-ftN"/>
                 <outlet property="statusMenu" destination="gTa-LP-5h4" id="2hA-cb-Jdh"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="gTa-LP-5h4">
             <items>
+                <menuItem title="Color Space" id="uYS-PM-I0I">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Color Space" id="Gmf-3M-KvY">
+                        <items>
+                            <menuItem title="RGB" state="on" id="coA-4R-iuU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="rgbClicked:" target="Voe-Tx-rLC" id="MWu-zN-LsJ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="HSB" id="yeO-VT-VLJ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="labClicked:" target="Voe-Tx-rLC" id="vHi-bU-T9Y"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Quit" id="CQc-qh-ySS" userLabel="Quit">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
