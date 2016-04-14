@@ -84,7 +84,7 @@ extension NSColor {
         let components = calendar.components([.Hour, .Minute, .Second], fromDate: date)
         let H = CGFloat(components.hour) / 24
         let S = CGFloat(components.minute) / 60
-        let B = CGFloat(components.second) / 60
+        let B = min((CGFloat(components.second) / 60), 0.1)
         return NSColor(calibratedHue: H, saturation: S, brightness: B, alpha: 1.0)
     }
 }
